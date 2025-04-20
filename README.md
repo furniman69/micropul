@@ -1,49 +1,40 @@
+# 🎴 Micropul - Godot Game
 
-# 🧩 Micropul2
+Micropul es una implementación del juego de mesa para 2 jugadores *Micropul*, desarrollado con Godot Engine 4.4. El proyecto simula la colocación de losetas sobre una cuadrícula con reglas específicas de emparejamiento y conexión.
 
-**Micropul2** es una implementación del juego de colocación de fichas tipo puzle inspirada en patrones lógicos y colores, desarrollada con el motor **Godot 4**.
+## 🧩 Características
 
-## 🎮 Características
+- Motor: **Godot 4.4**
+- Juego por turnos para 2 jugadores
+- Tablero interactivo con fichas que se arrastran y rotan
+- Validación automática de posiciones válidas
+- UI de selección de fichas en mano
+- Fichas con propiedades especiales: *micropuls* (colores) y *catalizadores*
 
-- Sistema de fichas con colores (micropuls) y catalizadores.
-- Validación dinámica de colocación según fichas adyacentes.
-- Cuadrícula centrada y adaptativa al tamaño de la ventana.
-- Feedback visual para errores de colocación.
-- Rotación de fichas en tiempo real.
-- Librería de fichas configuradas por datos (`TileLibrary.gd`).
+## 🚀 Cómo ejecutar
 
-## 🛠️ Estructura del Proyecto
+1. Descarga o clona el repositorio.
+2. Abre la carpeta `Micropul` con Godot 4.4.
+3. Ejecuta la escena principal: `main.tscn`.
+
+## 📁 Estructura
 
 ```
-Micropul2/
-├── main.gd                 # Lógica del tablero y colocación de fichas
-├── tile.gd                 # Lógica interna de cada ficha
-├── TileLibrary.gd          # Base de datos de fichas disponibles
-├── tile.tscn               # Escena de una ficha
-├── main.tscn               # Escena principal del juego
-├── project.godot           # Archivo de configuración del proyecto Godot
-└── tiles/                  # Imágenes de fichas (tile_XX.png)
+Micropul/
+├── main.gd                # Lógica principal del juego
+├── tile.gd                # Script para cada loseta
+├── TileLibrary.gd         # Base de datos de losetas
+├── tile_preview.gd        # Vista previa para la mano
+├── *.tscn                 # Escenas (main, tile, preview)
+├── tiles/                 # Imágenes de losetas
 ```
 
-## ⌨️ Controles
+## 🛠️ Créditos
 
-- `R`: Rota la ficha seleccionada 90° en sentido horario.
-- `Click Izquierdo`: Intenta colocar la ficha en la celda donde esté el mouse.
+Juego de mesa original: [Jean-François Lassonde](https://boardgamegeek.com/boardgame/10345/micropul)
 
-## 🚧 Requisitos
+Implementación Godot: desarrollada por Jordi Fornaguera aka furniman
 
-- **Godot 4.2 o superior** para ejecutar el proyecto correctamente.
+## 📜 Licencia
 
-## 📦 Instalación
-
-1. Clona este repositorio o descarga el ZIP:
-    ```bash
-    git clone https://github.com/tu_usuario/Micropul2.git
-    ```
-2. Abre el proyecto en Godot.
-3. Ejecuta la escena `main.tscn`.
-
-## 📄 Licencia
-
-Este proyecto está licenciado bajo la MIT License.
-
+Este proyecto es libre. Puedes modificarlo y distribuirlo, pero por favor acredita al creador original del juego.
