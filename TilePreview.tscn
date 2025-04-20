@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://67i4602avcci"]
+
+[ext_resource type="Script" uid="uid://b5mn77d2pe706" path="res://tile_preview.gd" id="1_ksqut"]
+
+[node name="TilePreview" type="TextureButton"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_ksqut")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
