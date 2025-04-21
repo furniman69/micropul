@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://b5mn77d2pe706" path="res://tile_preview.gd" id="1_ksqut"]
 
 [node name="TilePreview" type="TextureButton"]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.287
+offset_right = -9.0
+offset_bottom = 19.024
 script = ExtResource("1_ksqut")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

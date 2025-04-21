@@ -1,27 +1,27 @@
+
 extends Node2D
 
 # Identificador único de la ficha
 var tile_id: int = -1
-# Diccionario de micropuls: datos tipo "color" asignados a coordenadas 2D
+# Diccionario de micropuls (colores o tipos en posiciones específicas)
 var micropuls: Dictionary = {}
-# Diccionario de catalizadores: efectos adicionales como "+", ".", "*"
+# Diccionario de catalizadores (otras propiedades, opcional)
 var catalysts: Dictionary = {}
-# Datos originales sin modificar (sin rotar)
+# Datos originales sin rotación
 var original_data: Dictionary = {}
-# Rotación actual de la ficha (0 a 3 → 0°, 90°, 180°, 270°)
+# Estado de rotación (0 a 3, en pasos de 90 grados)
 var rotation_state: int = 0
 
-# Imprime datos al cargar la ficha
 func _ready():
 	print("✅ Tile ", tile_id, " cargado con micropuls: ", micropuls)
 
-# Asigna los datos del tile desde un diccionario, y prepara su sprite
+# Establece los datos de la ficha desde un diccionario externo
 func set_tile_data(data: Dictionary):
 	tile_id = data.id
 	original_data = data
 	remap_positions()
 
-	# Carga el sprite correspondiente al tile, si está disponible
+	# Carga y asigna la imagen del tile si existe
 	if has_node("Sprite2D"):
 		var sprite := $Sprite2D
 		print("🎨 Sprite tiene textura: ", sprite.texture)
@@ -31,13 +31,13 @@ func set_tile_data(data: Dictionary):
 		else:
 			print("⚠️ No se encontró imagen para tile ", tile_id, ": ", path)
 
-# Gira la ficha en sentido horario y actualiza su representación
+# Rota la ficha 90° en sentido horario y actualiza sus datos de posición
 func rotate_clockwise():
 	rotation_state = (rotation_state + 1) % 4
 	rotation_degrees = rotation_state * 90
 	remap_positions()
 
-# Reasigna los datos de micropuls y catalysts después de rotar la ficha
+# Reasigna las posiciones de micropuls y catalizadores tras la rotación
 func remap_positions():
 	micropuls.clear()
 	catalysts.clear()
@@ -52,11 +52,11 @@ func remap_positions():
 
 	print("🧬 Remapped micropuls: ", micropuls)
 
-# Aplica la rotación a una celda individual según el estado de rotación
+# Aplica rotación a una celda individual según el estado de rotación actual
 func rotate_cell(pos: Vector2i) -> Vector2i:
 	match rotation_state:
-		0: return pos  # 0°: sin cambio
-		1: return Vector2i(1 - pos.y, pos.x)  # 90° CW
-		2: return Vector2i(1 - pos.x, 1 - pos.y)  # 180°
-		3: return Vector2i(pos.y, 1 - pos.x)  # 270°
+		0: return pos
+		1: return Vector2i(1 - pos.y, pos.x)
+		2: return Vector2i(1 - pos.x, 1 - pos.y)
+		3: return Vector2i(pos.y, 1 - pos.x)
 	return pos
